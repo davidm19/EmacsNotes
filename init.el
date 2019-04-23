@@ -32,11 +32,18 @@
 ;; --------------------------------------------
 
 ;; Display Line numbers
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (when (version<="26.0.50" emacs-version)
   (global-display-line-numbers-mode))
 
 ;; Set font size to 17
-(set-face-attribute 'default nil :height 170)
+;; (set-face-attribute 'default nil :height 170)
 
 ;; 4 spaces to 1 tab (THIS WILL ALL DEPEND ON THE CODING STANDARDS OF THE LANGUAGE YOU'RE WORKING WITH)
 ; (setq-default indent-tabs-mode nil)
@@ -83,7 +90,10 @@
 
 ;; start fullscreen (you can disable if running this on macos)
 (custom-set-variables
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
 
 ;; -------------------------------------------
 ;; PACKAGE LIST
@@ -92,9 +102,9 @@
 ;; - AUTO-COMPLETE
 ;; - HELM
 ;; - FLYCHECK
-;; - EVIL MODE
-;; - KEY-CHORD
-;; - OPTIONAL: LANGUAGE-SPECIFIC PLUGINS 
+;; - OPTIONAL:
+;;           - EVIL MODE AND KEYCHORD
+;;           - LANGUAGE-SPECIFIC PLUGINS 
 ;;             (USUALLY CALLED <LANGUAGE>-MODE; 
 ;;             i.e. haskell-mode, python-mode, etc)
 
@@ -125,3 +135,9 @@
 ;; -------------------------------------------
 ;; THANKS FOR WATCHING!
 ;; -------------------------------------------
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
