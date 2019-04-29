@@ -102,6 +102,7 @@
 ;; - AUTO-COMPLETE
 ;; - HELM
 ;; - FLYCHECK
+;; - ZEN-MODE (read here: https://github.com/aki237/zen-mode and then here: https://www.emacswiki.org/emacs/LoadPath (YES, USE A SEPARATE SUBDIRECTORY!) to install)
 ;; - OPTIONAL:
 ;;           - EVIL MODE AND KEYCHORD
 ;;           - LANGUAGE-SPECIFIC PLUGINS 
