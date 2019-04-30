@@ -82,7 +82,7 @@
 (global-set-key (kbd "C-x P") 'vc-update)
 
 (global-set-key (kbd "M-g") 'goto-line)
-(global-set-key (kbd "M-f") 'helm-find-files)
+(global-set-key (kbd "C-M-f") 'helm-find-files)
 
 ;; no toolbar and menubar
 (toggle-menu-bar-mode-from-frame 0)
