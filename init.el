@@ -90,10 +90,10 @@
 
 ;; start fullscreen (you can disable if running this on macos)
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+;; FOR ZEN MODE!!! LOOK ON THE GITHUB REPO FOR HELP ON INSTALLATION
+; (add-to-list 'load-path "~/.emacs.d/lips")
+; (require 'zen-mode)
+; (global-set-key (kbd "C-M-z") 'zen-mode)
 
 ;; -------------------------------------------
 ;; PACKAGE LIST
@@ -102,12 +102,14 @@
 ;; - AUTO-COMPLETE
 ;; - HELM
 ;; - FLYCHECK
-;; - ZEN-MODE (read here: https://github.com/aki237/zen-mode and then here: https://www.emacswiki.org/emacs/LoadPath (YES, USE A SEPARATE SUBDIRECTORY!) to install)
 ;; - OPTIONAL:
 ;;           - EVIL MODE AND KEYCHORD
 ;;           - LANGUAGE-SPECIFIC PLUGINS 
 ;;             (USUALLY CALLED <LANGUAGE>-MODE; 
 ;;             i.e. haskell-mode, python-mode, etc)
+;; - auto-save-mode
+;; - flyspell (requires ispell, it's a command line util and is not a melpa install)
+;; - wc
 
 ;; -------------------------------------------
 ;; UNCOMMENT THESE SETTINGS WHEN ALL PACKAGES 
@@ -126,12 +128,23 @@
 ; (global-flycheck-mode)
 
 ; ;; Enable Evil Mode and map jj to escape
-; (evil-mode 1)
+;; (evil-mode 1)
 
 ; ;; Key Chord settings
-; (require 'key-chord)
-; (key-chord-mode 1)
-; (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+;; (require 'key-chord)
+;; (key-chord-mode 1)
+;; (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+
+; ;; Hooks for certain files
+; (add-to-list 'auto-mode-alist '("\\.txt\\'" . auto-save-mode))
+; (add-to-list 'auto-mode-alist '("\\.txt\\'" . flyspell-mode))
+; (add-to-list 'auto-mode-alist '("\\.txt\\'" . wc-mode))
+; (add-to-list 'auto-mode-alist '("\\.txt\\'" . zen-mode))
+
+; (add-to-list 'auto-mode-alist '("\\.tex\\'" . auto-save-mode))
+; (add-to-list 'auto-mode-alist '("\\.tex\\'" . flyspell-mode))
+; (add-to-list 'auto-mode-alist '("\\.tex\\'" . wc-mode))
+; (add-to-list 'auto-mode-alist '("\\.tex\\'" . zen-mode))
 
 ;; -------------------------------------------
 ;; THANKS FOR WATCHING!
