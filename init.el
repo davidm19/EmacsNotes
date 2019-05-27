@@ -105,14 +105,19 @@
 ;; - Evil Mode + Keychord
 ;; - Atom One Dark Theme
 ;; - Powerline
+;; - Auto-complete
 
-;; Enable Evil Mode and map jj to escape
+;; Evil Mode and key-chord settings
 (evil-mode 1)
-
-;; Key Chord settings
 (require 'key-chord)
 (key-chord-mode 1)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
+;; Powerline settings
 (require 'powerline)
 (powerline-vim-theme)
+
+;; Auto-complete settings
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
