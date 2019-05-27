@@ -45,7 +45,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (atom-one-dark-theme zenburn-theme powerline org-ac evil key-chord))))
+    (atom-one-dark-theme powerline evil key-chord))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
