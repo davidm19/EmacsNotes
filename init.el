@@ -13,25 +13,16 @@
 ;; Author: davidm19
 ;; Date:   Hastily hacked together sometime in
 ;;	   November-December 2018; Pruned and 
-;;	   officially pushed on April 18th, 2019
+;;	   officially pushed on April 18th, 2019;
+;;	   Recently reworked and updated May 27th,
+;;	   2019
 ;;
 ;; Put this file in your home directory and rename 
-;; it to .emacs. Then change and save the theme, 
-;; link to MELPA and download the listed packages. 
-;; Then uninstall Emacs, grow some common sense 
-;; and use Vim, you animal.
+;; it to .emacs, then download the listed 
+;; packages.  Then uninstall Emacs, grow some  
+;; common sense and use Vim, you animal.
 ;; -----------------------------------------------                                   
 
-;; MELPA link: https://stable.melpa.org/packages/
-;; How to add: M-x customize-group --> packages --> add new group
-
-;; fav theme: manoj dark
-
-;; --------------------------------------------
-;; HERE'S WHERE THE ACTUAL CONFIGURATION STARTS
-;; --------------------------------------------
-
-;; Display Line numbers
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -39,16 +30,32 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (atom-one-dark)))
+ '(custom-safe-themes
+   (quote
+    ("59171e7f5270c0f8c28721bb96ae56d35f38a0d86da35eab4001aebbd99271a8" "84890723510d225c45aaff941a7e201606a48b973f0121cb9bcb0b9399be8cba" default)))
+ '(package-archives
+   (quote
+    (("melpa" . "https://stable.melpa.org/packages/")
+     ("gnu" . "https://elpa.gnu.org/packages/"))))
+ '(package-selected-packages
+   (quote
+    (atom-one-dark-theme zenburn-theme powerline org-ac evil key-chord))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; Display Line Numbers
 (when (version<="26.0.50" emacs-version)
   (global-display-line-numbers-mode))
-
-;; Set font size to 17
-;; (set-face-attribute 'default nil :height 170)
-
-;; 4 spaces to 1 tab (THIS WILL ALL DEPEND ON THE CODING STANDARDS OF THE LANGUAGE YOU'RE WORKING WITH)
-; (setq-default indent-tabs-mode nil)
-; (setq-default tab-width 4)
-; (setq indent-line-function 'insert-tab)
 
 ;; Auto complete parentheses pairs
 (electric-pair-mode 1)
@@ -88,70 +95,24 @@
 (toggle-menu-bar-mode-from-frame 0)
 (tool-bar-mode 0)
 
-;; start fullscreen (you can disable if running this on macos)
-(custom-set-variables
-;; FOR ZEN MODE!!! LOOK ON THE GITHUB REPO FOR HELP ON INSTALLATION
-; (add-to-list 'load-path "~/.emacs.d/lips")
-; (require 'zen-mode)
-; (global-set-key (kbd "C-M-z") 'zen-mode)
+;; Change emacs font (THIS IS ANOTHER DEPENDENCY!)
+(set-face-attribute 'default nil :font "Iosevka Nerd Font-16" )
+(set-frame-font "Iosevka Nerd Font-16" nil t)
 
 ;; -------------------------------------------
 ;; PACKAGE LIST
 ;; -------------------------------------------
-;; - MAGIT
-;; - AUTO-COMPLETE
-;; - HELM
-;; - FLYCHECK
-;; - OPTIONAL:
-;;           - EVIL MODE AND KEYCHORD
-;;           - LANGUAGE-SPECIFIC PLUGINS 
-;;             (USUALLY CALLED <LANGUAGE>-MODE; 
-;;             i.e. haskell-mode, python-mode, etc)
-;; - auto-save-mode
-;; - flyspell (requires ispell, it's a command line util and is not a melpa install)
-;; - wc
+;; - Evil Mode + Keychord
+;; - Atom One Dark Theme
+;; - Powerline
 
-;; -------------------------------------------
-;; UNCOMMENT THESE SETTINGS WHEN ALL PACKAGES 
-;; ARE INSTALLED!!!
-;; -------------------------------------------
+;; Enable Evil Mode and map jj to escape
+(evil-mode 1)
 
-; ;; AUTOCOMPLETE MAGIC
-; (require 'auto-complete)
-; (require 'auto-complete-config)
-; (ac-config-default)
+;; Key Chord settings
+(require 'key-chord)
+(key-chord-mode 1)
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
-; ;; turn on git-gutter
-; (global-git-gutter+-mode)
-
-; ;; Enable FlyCheck
-; (global-flycheck-mode)
-
-; ;; Enable Evil Mode and map jj to escape
-;; (evil-mode 1)
-
-; ;; Key Chord settings
-;; (require 'key-chord)
-;; (key-chord-mode 1)
-;; (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-
-; ;; Hooks for certain files
-; (add-to-list 'auto-mode-alist '("\\.txt\\'" . auto-save-mode))
-; (add-to-list 'auto-mode-alist '("\\.txt\\'" . flyspell-mode))
-; (add-to-list 'auto-mode-alist '("\\.txt\\'" . wc-mode))
-; (add-to-list 'auto-mode-alist '("\\.txt\\'" . zen-mode))
-
-; (add-to-list 'auto-mode-alist '("\\.tex\\'" . auto-save-mode))
-; (add-to-list 'auto-mode-alist '("\\.tex\\'" . flyspell-mode))
-; (add-to-list 'auto-mode-alist '("\\.tex\\'" . wc-mode))
-; (add-to-list 'auto-mode-alist '("\\.tex\\'" . zen-mode))
-
-;; -------------------------------------------
-;; THANKS FOR WATCHING!
-;; -------------------------------------------
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(require 'powerline)
+(powerline-vim-theme)
