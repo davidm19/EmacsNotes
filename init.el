@@ -126,3 +126,6 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+
+;; HEY
+;; IF YOU WANT TO SET A COMPILER COMMAND (https://www.gnu.org/software/emacs/manual/html_node/emacs/Compilation.html), USE A LOCAL VARIABLE (https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html#Specifying-File-Variables)
