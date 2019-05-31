@@ -35,17 +35,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (atom-one-dark)))
+ '(custom-enabled-themes (quote (doom-one)))
  '(custom-safe-themes
    (quote
-    ("59171e7f5270c0f8c28721bb96ae56d35f38a0d86da35eab4001aebbd99271a8" "84890723510d225c45aaff941a7e201606a48b973f0121cb9bcb0b9399be8cba" default)))
+    ("6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" "59171e7f5270c0f8c28721bb96ae56d35f38a0d86da35eab4001aebbd99271a8" "84890723510d225c45aaff941a7e201606a48b973f0121cb9bcb0b9399be8cba" default)))
  '(package-archives
    (quote
     (("melpa" . "https://stable.melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/"))))
- '(package-selected-packages
-   (quote
-    (atom-one-dark-theme powerline evil key-chord))))
+ '(package-selected-packages (quote (doom-themes powerline evil key-chord))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -103,15 +101,22 @@
 ;; PACKAGE LIST
 ;; -------------------------------------------
 ;; - Evil Mode + Keychord
-;; - Atom One Dark Theme
+;; - Doom-themes
 ;; - Powerline
 ;; - Auto-complete
+;; - OPTIONAL
+;; 	- Helm Fuzzy-file finding (bound to C-M-f)
+;;	- A gitgutter
+;;	- Flycheck
 
 ;; Evil Mode and key-chord settings
 (evil-mode 1)
 (require 'key-chord)
 (key-chord-mode 1)
-(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state) ;; ergonomic exit
+(define-key evil-normal-state-map "gc" 'comment-line) ;; vim-commentary style commenting
+(define-key evil-normal-state-map ";h" 'split-window-below) ;; easy window splitting
+(define-key evil-normal-state-map ";v" 'split-window-right) ;; easy window splitting
 
 ;; Powerline settings
 (require 'powerline)
