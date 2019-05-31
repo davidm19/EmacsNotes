@@ -127,5 +127,8 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+;; Highlight the current line
+(global-hl-line-mode)
+
 ;; HEY
 ;; IF YOU WANT TO SET A COMPILER COMMAND (https://www.gnu.org/software/emacs/manual/html_node/emacs/Compilation.html), USE A LOCAL VARIABLE (https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html#Specifying-File-Variables)
