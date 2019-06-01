@@ -43,7 +43,7 @@
    (quote
     (("melpa" . "https://stable.melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/"))))
- '(package-selected-packages (quote (doom-themes powerline evil key-chord))))
+ '(package-selected-packages (quote (company doom-themes powerline evil key-chord))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -93,6 +93,9 @@
 (toggle-menu-bar-mode-from-frame 0)
 (tool-bar-mode 0)
 
+;; Highlight current line
+(global-hl-line-mode)
+
 ;; Change emacs font (THIS IS ANOTHER DEPENDENCY!)
 (set-face-attribute 'default nil :font "Iosevka Nerd Font-16" )
 (set-frame-font "Iosevka Nerd Font-16" nil t)
@@ -103,7 +106,7 @@
 ;; - Evil Mode + Keychord
 ;; - Doom-themes
 ;; - Powerline
-;; - Auto-complete
+;; - Auto-complete + company-mode
 ;; - OPTIONAL
 ;; 	- Helm Fuzzy-file finding (bound to C-M-f)
 ;;	- A gitgutter
@@ -127,8 +130,23 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-;; Highlight the current line
-(global-hl-line-mode)
+;; Completion with company mode
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-backends (delete 'company-semantic company-backends))
+(setq company-dabbrev-downcase 0)
+(setq company-idle-delay 0)
+(defun tab-indent-or-complete ()
+  (interactive)
+  (if (minibufferp)
+      (minibuffer-complete)
+    (if (or (not yas-minor-mode)
+            (null (do-yas-expand)))
+        (if (check-expansion)
+            (company-complete-common)
+          (indent-for-tab-command)))))
+
+(global-set-key [backtab] 'tab-indent-or-complete)
 
 ;; HEY
 ;; IF YOU WANT TO SET A COMPILER COMMAND (https://www.gnu.org/software/emacs/manual/html_node/emacs/Compilation.html), USE A LOCAL VARIABLE (https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html#Specifying-File-Variables)
