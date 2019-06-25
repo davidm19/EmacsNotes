@@ -136,6 +136,7 @@ YOU CAN COMBINE MOVEMENT COMMANDS WITH ```C-u``` TO MOVE ANY NUMBER OF SPACES
 -------------------------------------------------------------------------------
 ### TODO
 - HARNESSING THE IMMENSE POWER OF THE LISP BEHEMOTH THAT IS EMACS (NEWSREADERS, MAIL, ORG MODE, MUSIC, GAMES, ETC)
+- EXWM? (https://www.reddit.com/r/unixporn/search/?q=exwm&restrict_sr=1) (https://github.com/ch11ng/exwm)
 -------------------------------------------------------------------------------
 # WE'RE DONE!
 GNU Emacs is Copyright (C) 1991-1995, 1998, 2001-2018 Free Software Foundation, Inc.
